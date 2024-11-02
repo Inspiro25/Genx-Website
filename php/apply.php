@@ -51,22 +51,13 @@ if(isset($_POST['submit'])) {
 
     require '../phpmailer/PHPMailerAutoload.php';
 
-    $mail = new PHPMailer();
-    $mail->isSMTP();
-
-    // Enter SMTP outbox:
-    $mail->Host = "live.smtp.mailtrap.io"; // e.g. smtp.1und1.de
-
-    $mail->IsHTML(true);
-    $mail->SMTPAuth = true;
-
-    // Login and password of the recipient email
-    $mail->Username = "smtp@mailtrap.io"; // e.g. info@techkings.de
-    $mail->Password = "64c9cf5d0c12c0ee644cc2f6546d3e1e"; // Password Email / Username
-
-    // Encryption protocol
-    $mail->SMTPSecure = "ssl";
-    $mail->Port = 587; // Port for SMTP
+    $phpmailer = new PHPMailer();
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'live.smtp.mailtrap.io';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = 587;
+    $phpmailer->Username = 'api';
+    $phpmailer->Password = '64c9cf5d0c12c0ee644cc2f6546d3e1e';
 
     $mail->Subject = "Request via Website";
     $mail->Body = $message;
