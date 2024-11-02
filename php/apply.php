@@ -55,17 +55,17 @@ if(isset($_POST['submit'])) {
     $mail->isSMTP();
 
     // Enter SMTP outbox:
-    $mail->Host = "pop.gmail.com"; // e.g. smtp.1und1.de
+    $mail->Host = "live.smtp.mailtrap.io"; // e.g. smtp.1und1.de
 
     $mail->IsHTML(true);
     $mail->SMTPAuth = true;
 
     // Login and password of the recipient email
-    $mail->Username = "genxroleplay25@gmail.com"; // e.g. info@techkings.de
-    $mail->Password = "#Chandappan@123!"; // Password Email / Username
+    $mail->Username = "smtp@mailtrap.io"; // e.g. info@techkings.de
+    $mail->Password = "64c9cf5d0c12c0ee644cc2f6546d3e1e"; // Password Email / Username
 
     // Encryption protocol
-    $mail->SMTPSecure = "StartTLS";
+    $mail->SMTPSecure = "ssl";
     $mail->Port = 587; // Port for SMTP
 
     $mail->Subject = "Request via Website";
