@@ -13,22 +13,22 @@ if(isset($_POST['submit'])) {
     $mail->isSMTP();
 
     // Enter SMTP outbox:
-    $mail->Host = ""; // e.g. smtp.1und1.de
+    $mail->Host = "smtp.gmail.com"; // e.g. smtp.1und1.de
 
     $mail->IsHTML(true);
     $mail->SMTPAuth = true;
 
     // Login and password of the recipient email
-    $mail->Username = ""; // e.g. info@techkings.de
-    $mail->Password = ""; // Password Email / Username
+    $mail->Username = "genxroleplay25@gmail.com"; // e.g. info@techkings.de
+    $mail->Password = "#Chandappan@123!"; // Password Email / Username
 
     // Encryption protocol
     $mail->SMTPSecure = "tls";
-    $mail->Port = 25; // Port for SMTP
+    $mail->Port = 587; // Port for SMTP
 
     $mail->Subject = "Request via Website";
     $mail->Body = $message;
-    $mail->setFrom("info@techkings.de", $username); // Deliverer email
+    $mail->setFrom("genxroleplay25@gmail.com", $username); // Deliverer email
     $mail->addAddress('CommanderDonkey@gmail.com'); // email recipient
 
 
