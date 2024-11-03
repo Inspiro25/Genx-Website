@@ -503,7 +503,7 @@ body,
   left: 2%;
   width: 49px;
   height: 50px;
-  background: url(../images/turbo-logo.png) no-repeat;
+  background: url() no-repeat;
   background-size: 100%;
 }
 
@@ -1257,7 +1257,7 @@ html .without_loader .loader i {
   left: 100px;
   right: 0;
   margin: auto;
-  background-image: url("../images/turbo-logo.png");
+  background-image: url("");
   width: 1192px;
   height: 823px;
   background-size: 100%;
@@ -1291,7 +1291,7 @@ html .without_loader .loader i {
   left: 0;
   right: 0;
   margin: auto;
-  background-image: url("../images/turbo-logo.png");
+  background-image: url("");
   width: 401px;
   height: 277px;
   z-index: 2;
