@@ -3,267 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FiveM Whitelist Application</title>
+    <title>Genx Roleplay Whitelist Application</title>
     <style>
-        /* Global styling */
+        /* General Styling */
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* Application form container with sleek, modern look */
-        .application-form {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px 40px;
-            border-radius: 10px;
-            width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Form heading styling */
-        h2 {
-            text-align: center;
+        header {
+            background: #333;
             color: #fff;
-            font-size: 32px;
-            margin-bottom: 20px;
+            padding: 10px 20px;
+            text-align: center;
         }
 
-        /* Button styling */
-        button {
-            background: linear-gradient(45deg, #00b3b3, #006666);
-            padding: 14px 0;
-            width: 100%;
-            border: none;
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea, select, button, .options {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background: #4CAF50;
             color: white;
-            font-size: 18px;
+            border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
-            margin-bottom: 20px;
         }
 
         button:hover {
-            background: linear-gradient(45deg, #006666, #00b3b3);
+            background: #45a049;
         }
 
-        /* Input and text area styling */
-        input[type="text"], input[type="number"], select, textarea {
-            background: #222;
-            border: 1px solid #555;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 16px;
-            width: 100%;
-            color: #fff;
-            font-size: 16px;
-            transition: all 0.3s ease;
+        .question {
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
-            background: #333;
-            border-color: #00aaff;
-        }
-
-        label {
-            font-size: 16px;
-            margin-bottom: 6px;
-            display: block;
-            color: #fff;
-        }
-
-        /* Radio button and multiple-choice group styling */
-        .radio-group {
+        .options {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
         }
 
-        .radio-group label {
-            margin-top: 8px;
-            font-size: 16px;
-        }
-
-        .radio-group input {
-            margin-right: 10px;
-        }
-
-        /* Success and error message styling */
-        .message {
+        .status {
             text-align: center;
-            padding: 15px;
-            border-radius: 8px;
-            display: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
             margin-top: 20px;
-        }
-
-        .message.success {
-            background-color: #4caf50;
-            color: white;
-        }
-
-        .message.error {
-            background-color: #f44336;
-            color: white;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .application-form {
-                width: 80%;
-            }
-
-            h2 {
-                font-size: 28px;
-            }
-
-            button {
-                font-size: 16px;
-            }
+            background: #333;
+            color: #fff;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Genx Roleplay Whitelist Application</h1>
+    </header>
 
-    <div class="application-form">
-        <h2>FiveM Whitelist Application</h2>
-        <button onclick="loginWithDiscord()">Login with Discord</button>
-        <form id="whitelistForm" style="display:none;">
-            <input type="hidden" id="discordId" name="discordId">
+    <div class="container">
+        <form id="whitelist-form">
+            <div class="question">1. Discord Username (e.g., User#1234):</div>
+            <input type="text" id="discordName" placeholder="Enter your Discord username" required />
 
-            <label for="characterName">Character Name</label>
-            <input type="text" id="characterName" name="characterName" required>
+            <div class="question">2. Discord ID:</div>
+            <input type="text" id="discordID" placeholder="Enter your Discord ID (e.g., 123456789012345678)" required />
 
-            <label for="age">Character Age</label>
-            <input type="number" id="age" name="age" required>
+            <div class="question">3. Why do you want to join this RP server?</div>
+            <textarea id="application" rows="4" placeholder="Write your response here" required></textarea>
 
-            <label for="backstory">Character Backstory</label>
-            <textarea id="backstory" name="backstory" required rows="4"></textarea>
+            <div class="question">4. What role would you like to play?</div>
+            <div class="options">
+                <label><input type="radio" name="characterRole" value="Police" required /> Police</label>
+                <label><input type="radio" name="characterRole" value="Civilian" /> Civilian</label>
+                <label><input type="radio" name="characterRole" value="Criminal" /> Criminal</label>
+            </div>
 
-            <label for="rpStyle">What is your preferred RP style?</label>
-            <select id="rpStyle" name="rpStyle" required>
-                <option value="Casual">Casual</option>
-                <option value="Serious">Serious</option>
-                <option value="Story-driven">Story-driven</option>
-                <option value="Combat-oriented">Combat-oriented</option>
+            <div class="question">5. What is meta-gaming?</div>
+            <div class="options">
+                <label><input type="radio" name="metaGaming" value="Using out-of-character knowledge in character" required /> Using out-of-character knowledge in character</label>
+                <label><input type="radio" name="metaGaming" value="Breaking server rules intentionally" /> Breaking server rules intentionally</label>
+                <label><input type="radio" name="metaGaming" value="Power-playing in scenarios" /> Power-playing in scenarios</label>
+            </div>
+
+            <div class="question">6. What is power-gaming?</div>
+            <div class="options">
+                <label><input type="radio" name="powerGaming" value="Creating unfair or unrealistic scenarios" required /> Creating unfair or unrealistic scenarios</label>
+                <label><input type="radio" name="powerGaming" value="Using real-life knowledge in-game" /> Using real-life knowledge in-game</label>
+                <label><input type="radio" name="powerGaming" value="Roleplaying a passive character" /> Roleplaying a passive character</label>
+            </div>
+
+            <div class="question">7. How would you handle a dispute in-game?</div>
+            <textarea id="scenarioHandling" rows="4" placeholder="Write your response here" required></textarea>
+
+            <div class="question">8. What is your RP experience level?</div>
+            <select id="rpExperience" required>
+                <option value="" disabled selected>Select your experience level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
             </select>
 
-            <label>What is your experience level with RP?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="experience" value="Beginner" required> Beginner</label>
-                <label><input type="radio" name="experience" value="Intermediate" required> Intermediate</label>
-                <label><input type="radio" name="experience" value="Advanced" required> Advanced</label>
-            </div>
+            <div class="question">9. Why is following server rules important?</div>
+            <textarea id="serverRules" rows="3" placeholder="Write your response here" required></textarea>
 
-            <label>Do you prefer structured or freeform RP?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="structure" value="Structured" required> Structured</label>
-                <label><input type="radio" name="structure" value="Freeform" required> Freeform</label>
-            </div>
+            <div class="question">10. What unique contributions can you bring to the server?</div>
+            <textarea id="uniqueContributions" rows="3" placeholder="Write your response here" required></textarea>
 
             <button type="submit">Submit Application</button>
         </form>
 
-        <div class="message" id="message"></div>
+        <p id="status" class="status"></p>
     </div>
 
+    <footer>
+        <p>© 2024 FiveM RP Server</p>
+    </footer>
+
     <script>
-        let discordUserId;
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1306989129229144157/IyIgCOjMKpET1zrbJsXOv1d4CDbQQ-M8rku8TeOtgVMjGMbTCfy4WltjgRx1WyyqwtGo"; // Replace with your Discord webhook URL
 
-        // Step 1: Redirect user to Discord OAuth2 login
-        function loginWithDiscord() {
-            const clientId = '1294537055501684818';  // Replace with your Discord client ID
-            const redirectUri = encodeURIComponent(window.location.origin + '/callback');
-            const scope = 'identify email';
-            const authUrl = `https://discord.com/oauth2/authorize?client_id=1294537055501684818&response_type=code&redirect_uri=https%3A%2F%2Fgenxrp.fun%2Fwhitelist.html&scope=identify+email+guilds+guilds.channels.read+guilds.members.read`;
-            window.location.href = authUrl;
-        }
-
-        // Step 2: Handle OAuth2 callback and fetch user data
-        window.addEventListener('load', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            
-            if (code) {
-                // Step 3: Fetch user data from Discord API
-                fetch(`/exchange?code=${code}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        discordUserId = data.id;
-                        document.getElementById('discordId').value = discordUserId;
-                        document.getElementById('whitelistForm').style.display = 'block'; // Show form
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        });
-
-        // Step 4: Submit the application form
-        document.getElementById('whitelistForm').addEventListener('submit', function(event) {
+        document.getElementById('whitelist-form').addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const characterName = document.getElementById('characterName').value;
-            const age = document.getElementById('age').value;
-            const backstory = document.getElementById('backstory').value;
-            const rpStyle = document.getElementById('rpStyle').value;
-            const experience = document.querySelector('input[name="experience"]:checked').value;
-            const structure = document.querySelector('input[name="structure"]:checked').value;
-
-            const webhookUrl = 'https://discord.com/api/webhooks/1306647007645007992/b-yKxW7-LnMETNEcu6xyNFOFFrcXFTz0jLgW_oy-spfTmiFoGIDaicI5pGyOD5SEja_V';  // Replace with your Discord Webhook URL
-
-            const message = {
-                content: `New Whitelist Application from @${discordUserId}`,
-                embeds: [
-                    {
-                        title: 'Application Details',
-                        color: 3447003,
-                        fields: [
-                            { name: 'Discord User ID', value: discordUserId, inline: true },
-                            { name: 'Character Name', value: characterName, inline: true },
-                            { name: 'Character Age', value: age, inline: true },
-                            { name: 'Character Backstory', value: backstory, inline: false },
-                            { name: 'RP Style', value: rpStyle, inline: true },
-                            { name: 'Experience Level', value: experience, inline: true },
-                            { name: 'Preferred Structure', value: structure, inline: true }
-                        ]
-                    }
-                ]
+            const formData = {
+                discordName: document.getElementById('discordName').value,
+                discordID: document.getElementById('discordID').value,
+                application: document.getElementById('application').value,
+                characterRole: document.querySelector('input[name="characterRole"]:checked')?.value,
+                metaGaming: document.querySelector('input[name="metaGaming"]:checked')?.value,
+                powerGaming: document.querySelector('input[name="powerGaming"]:checked')?.value,
+                scenarioHandling: document.getElementById('scenarioHandling').value,
+                rpExperience: document.getElementById('rpExperience').value,
+                serverRules: document.getElementById('serverRules').value,
+                uniqueContributions: document.getElementById('uniqueContributions').value,
             };
 
-            // Send the application to Discord Webhook
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(message)
-            })
-            .then(response => response.json())
-            .then(() => {
-                document.getElementById('message').classList.add('success');
-                document.getElementById('message').innerText = 'Application submitted successfully!';
-                document.getElementById('message').style.display = 'block';
-            })
-            .catch(() => {
-                document.getElementById('message').classList.add('error');
-                document.getElementById('message').innerText = 'There was an error submitting your application.';
-                document.getElementById('message').style.display = 'block';
-            });
+            if (Object.values(formData).some((field) => !field)) {
+                document.getElementById('status').textContent = "All fields are required!";
+                document.getElementById('status').style.color = "red";
+                return;
+            }
+
+            document.getElementById('status').textContent = "Submitting...";
+            document.getElementById('status').style.color = "black";
+
+            const payload = {
+    embeds: [
+        {
+            title: "🎮 New Whitelist Application @everyone",
+            color: 3447003, // Blue color
+            fields: [
+                { name: "Discord Username", value: formData.discordName, inline: true },
+                { name: "Discord ID", value: `<@${formData.discordID}>`, inline: true },
+                { name: "Why Join?", value: formData.application || "N/A" },
+                { name: "Role Desired", value: formData.characterRole || "N/A", inline: true },
+                { name: "RP Experience", value: formData.rpExperience || "N/A", inline: true },
+                { name: "Meta-Gaming Definition", value: formData.metaGaming || "N/A" },
+                { name: "Power-Gaming Definition", value: formData.powerGaming || "N/A" },
+                { name: "Scenario Handling", value: formData.scenarioHandling || "N/A" },
+                { name: "Importance of Rules", value: formData.serverRules || "N/A" },
+                { name: "Unique Contributions", value: formData.uniqueContributions || "N/A" },
+            ],
+            footer: {
+                text: "GENX DEVELOPMENTS",
+                icon_url: "https://media.discordapp.net/attachments/1275301722037682321/1302624673309392906/1000113496-removebg-preview.png?ex=67389d43&is=67374bc3&hm=10f2884e9daa3e2895aee162c3371d0ddf925ccc8bc8ace43eb5b92ff72a30ad&=&format=webp&quality=lossless", // Replace with your server's logo URL
+            },
+            timestamp: new Date().toISOString(),
+        },
+    ],
+};
+
+
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+
+                if (response.ok) {
+                    document.getElementById('status').textContent = "Application submitted successfully!";
+                    document.getElementById('status').style.color = "green";
+                    document.getElementById('whitelist-form').reset();
+                } else {
+                    throw new Error("Failed to submit application.");
+                }
+            } catch (error) {
+                document.getElementById('status').textContent = "Error submitting application.";
+                document.getElementById('status').style.color = "red";
+                console.error(error);
+            }
         });
     </script>
 </body>
