@@ -24,7 +24,7 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #87CEEB;
+    background-color: #ffa500;
 }
 
 a {
